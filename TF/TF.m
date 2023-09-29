@@ -1,0 +1,140 @@
+len = readmatrix('C:\Users\AT75690\Desktop\Tal corpus\fricative\perturbated\perturbated_1\s\p1_len_day6_see_273.csv');
+XY = readmatrix('C:\Users\AT75690\Desktop\Tal corpus\fricative\perturbated\perturbated_1\s\p1_con_day6_see_273.csv');
+tf = zeros(8,3);
+
+for i = 1:8
+l = len(:,i);
+x = XY(:,2*i-1);
+y = XY(:,2*i);
+
+%%%%%%%%% TF1 %%%%%%%%%
+% determine the percentage
+TF1_len_A = 0.5;
+TF1_len_B = 0.725;
+TF1_len_C = 0.95;
+
+% get the 3 points' XY coordinates
+p_A = find(l<=TF1_len_A, 1, "last");
+t = (TF1_len_A - l(p_A))/(l(p_A + 1)-l(p_A));
+dx_A = t*(x(p_A+1)-x(p_A));
+dy_A = t*(y(p_A+1)-y(p_A));
+TF1_A = [x(p_A)+dx_A,y(p_A)+dy_A];
+
+p_B = find(l<=TF1_len_B, 1, "last");
+t = (TF1_len_B - l(p_B))/(l(p_B + 1)-l(p_B));
+dx_B = t*(x(p_B+1)-x(p_B));
+dy_B = t*(y(p_B+1)-y(p_B));
+TF1_B = [x(p_B)+dx_B,y(p_B)+dy_B];
+
+
+p_C = find(l<=TF1_len_C, 1, "last");
+t = (TF1_len_C - l(p_C))/(l(p_C + 1)-l(p_C));
+dx_C = t*(x(p_C+1)-x(p_C));
+dy_C = t*(y(p_C+1)-y(p_C));
+TF1_C = [x(p_C)+dx_C,y(p_C)+dy_C];
+
+% Calculate the radius of the circle passing through these 3 points
+mid1 = 0.5*(TF1_A+TF1_B);
+mid2 = 0.5*(TF1_B+TF1_C);
+k1 = -(TF1_B(1)-TF1_A(1))/(TF1_B(2)-TF1_A(2));
+k2 = -(TF1_C(1)-TF1_B(1))/(TF1_C(2)-TF1_B(2));
+CenterX1 = (mid2(2)-mid1(2)-k2*mid2(1)+k1*mid1(1))/(k1-k2);
+CenterY1 = k1*(CenterX1 - mid1(1))+mid1(2);
+radius1 = sqrt((TF1_A(1)-CenterX1)^2+(TF1_A(2)-CenterY1)^2);
+
+% get TF1
+TF1 = 100/radius1;
+
+%%%%%%%%% TF2 %%%%%%%%%
+% determine the percentage
+TF2_len_A = 0.5;
+TF2_len_B = 0.667;
+TF2_len_C = 0.834;
+
+% get the 3 points' XY coordinates
+p_A = find(l<=TF2_len_A, 1, "last");
+t = (TF2_len_A - l(p_A))/(l(p_A + 1)-l(p_A));
+dx_A = t*(x(p_A+1)-x(p_A));
+dy_A = t*(y(p_A+1)-y(p_A));
+TF2_A = [x(p_A)+dx_A,y(p_A)+dy_A];
+
+p_B = find(l<=TF2_len_B, 1, "last");
+t = (TF2_len_B - l(p_B))/(l(p_B + 1)-l(p_B));
+dx_B = t*(x(p_B+1)-x(p_B));
+dy_B = t*(y(p_B+1)-y(p_B));
+TF2_B = [x(p_B)+dx_B,y(p_B)+dy_B];
+
+
+p_C = find(l<=TF2_len_C, 1, "last");
+t = (TF2_len_C - l(p_C))/(l(p_C + 1)-l(p_C));
+dx_C = t*(x(p_C+1)-x(p_C));
+dy_C = t*(y(p_C+1)-y(p_C));
+TF2_C = [x(p_C)+dx_C,y(p_C)+dy_C];
+
+% Calculate the radius of the circle passing through these 3 points
+mid1 = 0.5*(TF2_A+TF2_B);
+mid2 = 0.5*(TF2_B+TF2_C);
+k1 = -(TF2_B(1)-TF2_A(1))/(TF2_B(2)-TF2_A(2));
+k2 = -(TF2_C(1)-TF2_B(1))/(TF2_C(2)-TF2_B(2));
+CenterX2 = (mid2(2)-mid1(2)-k2*mid2(1)+k1*mid1(1))/(k1-k2);
+CenterY2 = k1*(CenterX2 - mid1(1))+mid1(2);
+radius2 = sqrt((TF2_A(1)-CenterX2)^2+(TF2_A(2)-CenterY2)^2);
+
+% get TF2
+TF2 = 100/radius2;
+
+
+%%%%%%%%% TF3 %%%%%%%%%
+% determine the percentage
+TF3_len_A = 0.434;
+TF3_len_B = 0.667;
+TF3_len_C = 0.9;
+
+% get the 3 points' XY coordinates
+p_A = find(l<=TF3_len_A, 1, "last");
+t = (TF3_len_A - l(p_A))/(l(p_A + 1)-l(p_A));
+dx_A = t*(x(p_A+1)-x(p_A));
+dy_A = t*(y(p_A+1)-y(p_A));
+TF3_A = [x(p_A)+dx_A,y(p_A)+dy_A];
+
+p_B = find(l<=TF3_len_B, 1, "last");
+t = (TF3_len_B - l(p_B))/(l(p_B + 1)-l(p_B));
+dx_B = t*(x(p_B+1)-x(p_B));
+dy_B = t*(y(p_B+1)-y(p_B));
+TF3_B = [x(p_B)+dx_B,y(p_B)+dy_B];
+
+p_C = find(l<=TF3_len_C, 1, "last");
+t = (TF3_len_C - l(p_C))/(l(p_C + 1)-l(p_C));
+dx_C = t*(x(p_C+1)-x(p_C));
+dy_C = t*(y(p_C+1)-y(p_C));
+TF3_C = [x(p_C)+dx_C,y(p_C)+dy_C];
+
+% Calculate the radius of the circle passing through these 3 points
+mid1 = 0.5*(TF3_A+TF3_B);
+mid2 = 0.5*(TF3_B+TF3_C);
+k1 = -(TF3_B(1)-TF3_A(1))/(TF3_B(2)-TF3_A(2));
+k2 = -(TF3_C(1)-TF3_B(1))/(TF3_C(2)-TF3_B(2));
+CenterX3 = (mid2(2)-mid1(2)-k2*mid2(1)+k1*mid1(1))/(k1-k2);
+CenterY3 = k1*(CenterX3 - mid1(1))+mid1(2);
+radius3 = sqrt((TF3_A(1)-CenterX3)^2+(TF3_A(2)-CenterY3)^2);
+
+% get TF3
+TF3 = 100/radius3;
+
+tf(i,:) = [TF1,TF2,TF3];
+
+end
+writematrix(tf,'C:\Users\AT75690\Desktop\Tal corpus\fricative\perturbated\perturbated_1\s\p1_TF_day6_see_273.csv');
+
+% figure;  %% visiualize to make sure
+% plot(x,-y,'b.-');
+% hold on;
+% scatter(TF2_A(1), -TF2_A(2), 'r', 'filled');
+% scatter(TF2_B(1), -TF2_B(2), 'r', 'filled');
+% scatter(TF2_C(1), -TF2_C(2), 'r', 'filled');
+% hold on;
+% rectangle('Position', [CenterX2 - radius2, -CenterY2 - radius2, 2*radius2, 2*radius2], ...
+%     'Curvature', [1, 1], 'EdgeColor', 'r');
+% axis equal;
+
+
