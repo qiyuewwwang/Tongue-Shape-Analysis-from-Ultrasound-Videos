@@ -13,10 +13,8 @@
 
 3.Apply the video into GetContours
   the command scentence is: GetContours('filename.avi', 'VNAME','filename_desigened by yourself')
-  Get XY
-  Calculate l
-  eg. >> GetContours('C:\Users\AT75690\Desktop\inventory\uxtd\01M\atha.avi','VNAME','atha')
-      >> writematrix([apa(50).XY,apa(60).XY,apa(70).XY,apa(80).XY,apa(90).XY],'C:\Users\AT75690\Desktop\inventory\uxtd\01M\apa.csv')
+  Get XY: write down the XY coordinates from some determined frames: eg. writematrix([apa(50).XY,apa(60).XY,apa(70).XY],'target path\apa.csv')
+  Calculate l (normalized lenth): 'get_len.m'
 
 
 4.Add perturbation (in folder 'Perturbation'）
