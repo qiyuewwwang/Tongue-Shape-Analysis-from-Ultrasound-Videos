@@ -11,7 +11,7 @@
   the major coding file is "utternace_animate.ipynb"
   the output video's suffix should be .avi
 
-3.Apply the video into GetContours
+3.Apply the video into GetContours (https://github.com/mktiede/GetContours)
   the command scentence is: GetContours('filename.avi', 'VNAME','filename_desigened by yourself')
   Get XY: write down the XY coordinates from some determined frames: eg. writematrix([apa(50).XY,apa(60).XY,apa(70).XY],'target path\apa.csv')
   Calculate l (normalized lenth): 'get_len.m'
