@@ -23,8 +23,8 @@
   3)exponential_2: swing to right/left (to tip/root)
 
 
-5.Quantify the complexity of tongue shape (in folder 'analysis-4 measures')
-  1)MCI&Fourier (Dawson's codes)
+5.Tongue shape measures
+  1)MCI&Fourier (https://github.com/kdawson2/tshape_analysis)
   2)DEI&LOC (refer to the paper by Zharkova)
-  3)TF1, TF2, TF3
+  3)TF1, TF2, TF3 (in folder 'TF')
 
